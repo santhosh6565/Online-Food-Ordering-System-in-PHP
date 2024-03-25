@@ -4,6 +4,7 @@
                         Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
                         for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com  
                         Visit My Website : developerrony.com -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,35 +88,7 @@
     </header>
     <div style=" background-image: url('images/img/pimg.jpg');">
 
-        <?php
-include("connection/connect.php"); 
-error_reporting(0); 
-session_start(); 
-if(isset($_POST['submit']))  
-{
-	$username = $_POST['username'];  
-	$password = $_POST['password'];
-	
-	if(!empty($_POST["submit"]))   
-     {
-	$loginquery ="SELECT * FROM users WHERE username='$username' && password='".md5($password)."'"; //selecting matching records
-	$result=mysqli_query($db, $loginquery); //executing
-	$row=mysqli_fetch_array($result);
-	
-	                        if(is_array($row)) 
-								{
-                                    	$_SESSION["user_id"] = $row['u_id']; 
-										 header("refresh:1;url=index.php"); 
-	                            } 
-							else
-							    {
-                                      	$message = "Invalid Username or Password!"; 
-                                }
-	 }
-	
-	
-}
-?>
+        
 
         <!--  Author Name: MH RONY.
                         GigHub Link: https://github.com/dev-mhrony
@@ -133,9 +106,9 @@ if(isset($_POST['submit']))
                     </div>
                     <div class="form">
                         <h2>Login to your account</h2>
-                        <span style="color:red;"><?php echo $message; ?></span>
-                        <span style="color:green;"><?php echo $success; ?></span>
-                        <form action="" method="post">
+                        <!-- <span style="color:red;"><?php echo $message; ?></span>
+                        <span style="color:green;"><?php echo $success; ?></span> -->
+                        <form action="log.php" method="post">
                             <input type="text" placeholder="Username" name="username" />
                             <input type="password" placeholder="Password" name="password" />
                             <input type="submit" id="buttn" name="submit" value="Login" />
